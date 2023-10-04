@@ -14,7 +14,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'To Do App',
-  description: 'To do app suing next/shadcn/tailwind',
+  description: 'To do app using next/shadcn/tailwind',
 }
 
 export default function RootLayout({

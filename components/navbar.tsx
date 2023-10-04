@@ -14,7 +14,7 @@ const Navbar = () => {
       Logo
     </div>
     <div className="navbar-menu">
-        <MegaMenu />
+        {/* <MegaMenu /> */}
     </div>
     <div className="navbar-switcher">
       <ModeToggle />
