@@ -11,7 +11,7 @@ const Navbar = () => {
   const { theme } = useTheme();
 
   return (
-    <nav className="shadow-sm sticky container navbar mx-auto p-8 flex items-center justify-between">
+    <nav className="container navbar mx-auto p-4 flex items-center justify-between">
       <div className="navbar-logo">
         <a href="/">
           <LogoSvg

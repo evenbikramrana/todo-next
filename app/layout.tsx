@@ -4,6 +4,7 @@ import { Inter, Poppins } from 'next/font/google'
 import { ThemeProvider } from "@/components/theme-provider"
 import  Navbar  from '@/components/navbar'
 import { Toaster } from "@/components/ui/toaster"
+import Header from '@/components/Header'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -32,7 +33,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          <Header />
+          {/* <Navbar /> */}
           {children}
           <Toaster />
         </ThemeProvider>

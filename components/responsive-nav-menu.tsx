@@ -1,18 +1,22 @@
-
-import { Disclosure} from '@headlessui/react'
-import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons"
+import { Disclosure } from "@headlessui/react";
+import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Blogs', href: '#', current: false },
-]
+  { name: "Home", href: "/", current: true },
+  { name: "Projects", href: "/projects", current: false },
+  { name: "Blogs", href: "/blogs", current: false },
+];
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function ResponsiveNavMenu() {
+  const currentPathname = usePathname();
+  const {theme} = useTheme();
   return (
     <Disclosure as="div">
       {({ open }) => (
@@ -27,7 +31,10 @@ export default function ResponsiveNavMenu() {
                   {open ? (
                     <Cross1Icon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <HamburgerMenuIcon className="block h-6 w-6" aria-hidden="true" />
+                    <HamburgerMenuIcon
+                      className="block h-6 w-6"
+                      aria-hidden="true"
+                    />
                   )}
                 </Disclosure.Button>
               </div>
@@ -35,17 +42,22 @@ export default function ResponsiveNavMenu() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
+                          item.href === currentPathname 
+                            ? "bg-cyan-950 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-medium",
+                          theme === 'light' && item.href != currentPathname ? "text-[#020817]":""
                         )}
-                        aria-current={item.current ? 'page' : undefined}
+                        aria-current={
+                          item.href === currentPathname ? "page" : undefined
+                        }
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -61,10 +73,12 @@ export default function ResponsiveNavMenu() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
@@ -74,5 +88,5 @@ export default function ResponsiveNavMenu() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }
