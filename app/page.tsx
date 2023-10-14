@@ -18,11 +18,26 @@ export default function Home() {
                 data-wow-delay=".2s"
               >
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                Hi, I'm Bikram
+                  Hi, I'm Bikram
                 </h1>
                 <p className="mb-12 text-base font-medium !leading-relaxed text-body-color dark:text-white dark:opacity-90 sm:text-lg md:text-xl">
-                Welcome to my space. I am a software developer and write blogs about all things technology.
+                  Welcome to my space. I am a software developer by profession.
+                  I also write blogs about all things technology.
                 </p>
+                <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+                  <Link
+                    href="/projects"
+                    className="rounded-md bg-primary py-4 px-8 text-base font-semibold text-white dark:text-black duration-300 ease-in-out hover:bg-primary/80"
+                  >
+                    View Projects
+                  </Link>
+                  <Link
+                    href="/blogs"
+                    className="rounded-md bg-black/20 py-4 px-8 text-white bg-blue-700 hover:bg-blue-700/70 dark:bg-blue-950 dark:hover:bg-blue-950/30 font-semibold text-black duration-300 ease-in-out  dark:bg-white/20 dark:text-white "
+                  >
+                    Read Blogs
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
